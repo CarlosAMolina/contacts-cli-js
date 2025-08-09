@@ -1,5 +1,8 @@
 import { request } from 'graphql-request'
 
+const api_port = typeof process.env.API_PORT === 'undefined' ? 4000 : process.env.API_PORT;
+const API_URL = `http://localhost:${api_port}/graphql`;
+
 export const findContacts = async (filter) => {
     console.log(`Searching ${filter}`);
     const query = `
@@ -18,7 +21,7 @@ export const findContacts = async (filter) => {
       }
     `
     const variables = { filter: filter };
-    const { contacts } = await request('http://localhost:4000/graphql', query, variables);
+    const { contacts } = await request(API_URL, query, variables);
     const summary_array = contacts.map(contact => getContactSummary(contact));
     return summary_array.join('\n');
 }
