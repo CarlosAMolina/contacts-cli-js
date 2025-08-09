@@ -23,6 +23,6 @@ export const findContacts = async (filter) => {
 }
 
 export const getIdContact = async (id) => {
-  console.log(`Getting ID ${id}`);
+  console.log(`Getting ID ${id} is not implemented`);
   return 1;
 }
