@@ -22,6 +22,7 @@
     },
     "homepage": "https://github.com/CarlosAMolina/contacts-cli-js#readme",
     "dependencies": {
+        "yargs": "^18.0.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.32.0",
