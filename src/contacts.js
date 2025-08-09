@@ -29,9 +29,19 @@ export const getIdContact = async (id) => {
 }
 
 const getContactSummary = (contact) => {
-    const categories = contact.categories.join(', ');
-    const result_array = contact.phones.map(phone => 
-        `${phone.number} (${phone.description}) ${contact.name} ${contact.surname}. ${categories}. ID ${contact.id}`
+    let result = contact.name;
+    if (contact.surname !== null) {
+        result += ` ${contact.surname}`
+    }
+    if (contact.categories !== null) {
+        result += `. ${contact.categories.join(', ')}`;
+    }
+    result += `. ID ${contact.id}`;
+    if (contact.phones === null) {
+        return result;
+    }
+    const phonesSummary = contact.phones.map(phone =>
+        phone.description === null ? phone.number : `${phone.number} (${phone.description})`
     );
-    return result_array.join('\n');
+    return phonesSummary.map(phoneSummary => `${phoneSummary} ${result}`).join('\n');
 }
