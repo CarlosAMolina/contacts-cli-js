@@ -17,8 +17,8 @@ export const findContacts = async (filter) => {
       }
     }
   `
-  const response = await request('http://localhost:4000/graphql', query);
-  return response;
+  const { contacts } = await request('http://localhost:4000/graphql', query);
+  return contacts;
 }
 
 export const getIdContact = async (id) => {
