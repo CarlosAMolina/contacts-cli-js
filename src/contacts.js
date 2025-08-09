@@ -1,8 +1,8 @@
 import { request } from 'graphql-request'
 
 export const findContacts = async (filter) => {
-  console.log(`Searching ${filter}`);
-  const query = `
+    console.log(`Searching ${filter}`);
+    const query = `
     query findContacts($filter: String) {
       contacts(filter:$filter) {
         categories
@@ -17,12 +17,12 @@ export const findContacts = async (filter) => {
       }
     }
   `
-  const variables = { filter: filter }
-  const { contacts } = await request('http://localhost:4000/graphql', query, variables);
-  return contacts;
+    const variables = { filter: filter }
+    const { contacts } = await request('http://localhost:4000/graphql', query, variables);
+    return contacts;
 }
 
 export const getIdContact = async (id) => {
-  console.log(`Getting ID ${id} is not implemented`);
-  return 1;
+    console.log(`Getting ID ${id} is not implemented`);
+    return 1;
 }
