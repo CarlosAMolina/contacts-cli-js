@@ -3,8 +3,8 @@ import { request } from 'graphql-request'
 export const findContacts = async (filter) => {
   console.log(`Searching ${filter}`);
   const query = `
-    {
-      contacts {
+    query findContacts($filter: String) {
+      contacts(filter:$filter) {
         categories
         id
         name
@@ -17,7 +17,8 @@ export const findContacts = async (filter) => {
       }
     }
   `
-  const { contacts } = await request('http://localhost:4000/graphql', query);
+  const variables = { filter: filter }
+  const { contacts } = await request('http://localhost:4000/graphql', query, variables);
   return contacts;
 }
 
