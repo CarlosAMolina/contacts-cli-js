@@ -96,6 +96,32 @@ const getContactAllData = (contact) => {
         result += '\nEmails:\n  ';
         result += contact.emails.join('\n  ');
     }
+    if (contact.socialNetwork !== null) {
+        result += '\nSocial networks:\n  ';
+        if (contact.socialNetwork.discordAccounts !== null) {
+            result += '  Discord:\n';
+            result += contact.socialNetwork.discordAccounts.map(discord => {
+                let discordString = '';
+                if (discord.alias !== null) {
+                    discordString += `\n    Alias: ${discord.alias}`;
+                }
+                if (discord.discriminator !== null) {
+                    discordString += `\n    Discriminator: ${discord.discriminator}`;
+                }
+                if (discord.globalName !== null) {
+                    discordString += `\n    Global name: ${discord.globalName}`;
+                }
+                if (discord.legacyUserName !== null) {
+                    discordString += `\n    Legacy user name: ${discord.legacyUserName}`;
+                }
+                if (discord.userName !== null) {
+                    discordString += `\n    User name: ${discord.userName}`;
+                }
+                discordString += '\n';  // To differentiate between each account
+                return discordString;
+            }).join('\n');
+        }
+    }
     return result;
 }
 
