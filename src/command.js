@@ -18,8 +18,9 @@ yargs(hideBin(process.argv))
             type: 'number'
         })
     }, async (argv) => {
-        const contact = await getIdContact(argv.id)
-        console.log(contact)
+        const contact = await getIdContact(argv.id);
+        console.log();
+        console.log(contact);
     })
     .demandCommand(1)
     .parse()
