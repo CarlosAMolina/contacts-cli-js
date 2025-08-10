@@ -1,4 +1,4 @@
-FROM node:22.14.0-slim
+FROM node:24-alpine3.21
 COPY package.json package-lock.json /
 RUN npm ci --omit=dev
 COPY index.js /
