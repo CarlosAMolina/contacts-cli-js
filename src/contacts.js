@@ -81,6 +81,10 @@ const getContactAllData = (contact) => {
         result += '\nCategories:\n  ';
         result += contact.categories.join('\n  ');
     }
+    if (contact.addresses !== null) {
+        result += '\nAddresses:\n  ';
+        result += contact.addresses.join('\n  ');
+    }
     if (contact.phones !== null) {
         result += '\nPhones:\n  ';
         const phones = contact.phones.map(phone =>
