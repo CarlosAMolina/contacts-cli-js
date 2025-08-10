@@ -81,16 +81,20 @@ const getContactAllData = (contact) => {
         result += '\nCategories:\n  ';
         result += contact.categories.join('\n  ');
     }
-    if (contact.addresses !== null) {
-        result += '\nAddresses:\n  ';
-        result += contact.addresses.join('\n  ');
-    }
     if (contact.phones !== null) {
         result += '\nPhones:\n  ';
         const phones = contact.phones.map(phone =>
             phone.description === null ? phone.number : `${phone.number} ${phone.description}`
         );
         result += phones.join('\n  ');
+    }
+    if (contact.addresses !== null) {
+        result += '\nAddresses:\n  ';
+        result += contact.addresses.join('\n  ');
+    }
+    if (contact.emails !== null) {
+        result += '\nEmails:\n  ';
+        result += contact.emails.join('\n  ');
     }
     return result;
 }
