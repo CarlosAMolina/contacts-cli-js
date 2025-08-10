@@ -104,6 +104,9 @@ const getContactSummary = (contact) => {
     if (contact.surname !== null) {
         result += ` ${contact.surname}`;
     }
+    if (contact.nicknames !== null) {
+        result += `. ${contact.nicknames.join(', ')}`;
+    }
     if (contact.categories !== null) {
         result += `. ${contact.categories.join(', ')}`;
     }
