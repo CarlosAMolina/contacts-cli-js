@@ -1,7 +1,8 @@
 import { request } from 'graphql-request'
 
 const api_port = typeof process.env.API_PORT === 'undefined' ? 4000 : process.env.API_PORT;
-const API_URL = `http://localhost:${api_port}/graphql`;
+const api_ip = typeof process.env.API_IP === 'undefined' ? 'localhost' : process.env.API_IP;
+const API_URL = `http://${api_ip}:${api_port}/graphql`;
 
 export const findContacts = async (filter) => {
     console.log(`Searching ${filter}`);

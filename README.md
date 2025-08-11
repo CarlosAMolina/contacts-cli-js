@@ -1,3 +1,5 @@
-## Docker configuration
+# contacts-cli-js
 
-It is explained in this [file](https://github.com/CarlosAMolina/contacts/blob/main/README.md).
+## Configuration
+
+Read this [file](https://github.com/CarlosAMolina/contacts/blob/main/README.md) for an explanation of Docker, Bash, etc.
