@@ -170,6 +170,7 @@ const getContactAllData = (contact) => {
             }).join('\n');  // To differentiate between each account
         }
     }
+    result += `\nID: ${contact.id}`;
     return result;
 }
 
