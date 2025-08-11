@@ -23,10 +23,12 @@ run:
 		$(CLI_IMAGE_NAME)
 
 # [pass argument](https://stackoverflow.com/a/2826069)
+# Example: make search-term term='1'
 search-id:
 	docker exec -it $(CLI_CONTAINER_NAME) node index.js i $(term)
 
 # [pass argument](https://stackoverflow.com/a/2826069)
+# Example: make search-term term='carlos'
 search-term:
 	docker exec -it $(CLI_CONTAINER_NAME) node index.js c $(term)
 
