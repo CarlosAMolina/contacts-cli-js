@@ -1,12 +1,27 @@
+API_PORT=5000
+CLI_CONTAINER_IP=172.20.0.3
 CLI_IMAGE_NAME=contacts-cli-js
 CLI_CONTAINER_NAME=$(CLI_IMAGE_NAME)-container
-API_PORT=5000
+NETWORK_NAME=contacts-network
 
 build:
 	docker build --build-arg PORT=$(API_PORT) -t $(CLI_IMAGE_NAME) .
 
 run:
-	docker run --rm -d --name $(CLI_CONTAINER_NAME) $(CLI_IMAGE_NAME)
+	docker run \
+		--rm \
+		-dit \
+		--net=$(NETWORK_NAME) \
+		--name $(CLI_CONTAINER_NAME) \
+		$(CLI_IMAGE_NAME)
+
+# [pass argument](https://stackoverflow.com/a/2826069)
+search-id:
+	docker exec -it $(CLI_CONTAINER_NAME) node index.js i $(term)
+
+# [pass argument](https://stackoverflow.com/a/2826069)
+search-term:
+	docker exec -it $(CLI_CONTAINER_NAME) node index.js c $(term)
 
 stop:
 	docker stop $(CLI_CONTAINER_NAME)
