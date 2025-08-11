@@ -117,9 +117,8 @@ const getContactAllData = (contact) => {
                 if (discord.userName !== null) {
                     discordString += `\n      User name: ${discord.userName}`;
                 }
-                discordString += '\n';  // To differentiate between each account
                 return discordString;
-            }).join('\n');
+            }).join('\n');  // To differentiate between each account
         }
     }
     return result;
