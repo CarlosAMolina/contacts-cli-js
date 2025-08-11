@@ -77,6 +77,10 @@ const getContactAllData = (contact) => {
     if (contact.surname !== null) {
         result += ` ${contact.surname}`;
     }
+    if (contact.nicknames !== null) {
+        result += '\nNicknames:\n  ';
+        result += contact.nicknames.join('\n  ');
+    }
     if (contact.categories !== null) {
         result += '\nCategories:\n  ';
         result += contact.categories.join('\n  ');
@@ -88,6 +92,9 @@ const getContactAllData = (contact) => {
         );
         result += phones.join('\n  ');
     }
+    if (contact.note !== null) {
+        result += `\nNote: ${contact.note}`;
+    }
     if (contact.addresses !== null) {
         result += '\nAddresses:\n  ';
         result += contact.addresses.join('\n  ');
@@ -96,28 +103,70 @@ const getContactAllData = (contact) => {
         result += '\nEmails:\n  ';
         result += contact.emails.join('\n  ');
     }
+    if (contact.urls !== null) {
+        result += '\nUrls:\n  ';
+        result += contact.urls.join('\n  ');
+    }
     if (contact.socialNetwork !== null) {
-        result += '\nSocial networks:\n  ';
+        result += '\nSocial networks:';
         if (contact.socialNetwork.discordAccounts !== null) {
-            result += '  Discord:';
+            result += '\n  Discord:';
             result += contact.socialNetwork.discordAccounts.map(discord => {
                 let discordString = '';
                 if (discord.alias !== null) {
-                    discordString += `\n      Alias: ${discord.alias}`;
+                    discordString += `\n    Alias: ${discord.alias}`;
                 }
                 if (discord.discriminator !== null) {
-                    discordString += `\n      Discriminator: ${discord.discriminator}`;
+                    discordString += `\n    Discriminator: ${discord.discriminator}`;
                 }
                 if (discord.globalName !== null) {
-                    discordString += `\n      Global name: ${discord.globalName}`;
+                    discordString += `\n    Global name: ${discord.globalName}`;
                 }
                 if (discord.legacyUserName !== null) {
-                    discordString += `\n      Legacy user name: ${discord.legacyUserName}`;
+                    discordString += `\n    Legacy user name: ${discord.legacyUserName}`;
                 }
                 if (discord.userName !== null) {
-                    discordString += `\n      User name: ${discord.userName}`;
+                    discordString += `\n    User name: ${discord.userName}`;
                 }
                 return discordString;
+            }).join('\n');  // To differentiate between each account
+        }
+        if (contact.socialNetwork.facebookAccounts !== null) {
+            result += '\n  Facebook:\n    ';
+            result += contact.socialNetwork.facebookAccounts.join('\n    ');
+        }
+        if (contact.socialNetwork.githubAccounts !== null) {
+            result += '\n  GitHub:\n    ';
+            result += contact.socialNetwork.githubAccounts.join('\n    ');
+        }
+        if (contact.socialNetwork.instagramAccounts !== null) {
+            result += '\n  Instagram:\n    ';
+            result += contact.socialNetwork.instagramAccounts.join('\n    ');
+        }
+        if (contact.socialNetwork.linkedinAccounts !== null) {
+            result += '\n  LinkedIn:\n    ';
+            result += contact.socialNetwork.linkedinAccounts.join('\n    ');
+        }
+        if (contact.socialNetwork.telegramAccounts !== null) {
+            result += '\n  Telegram:\n    ';
+            result += contact.socialNetwork.telegramAccounts.join('\n    ');
+        }
+        if (contact.socialNetwork.tiktokAccounts !== null) {
+            result += '\n  TikTok:\n    ';
+            result += contact.socialNetwork.tiktokAccounts.join();
+        }
+        if (contact.socialNetwork.twitterAccounts !== null) {
+            result += '\n  Twitter:\n    ';
+            result += contact.socialNetwork.twitterAccounts.join();
+        }
+        if (contact.socialNetwork.wallapopAccounts !== null) {
+            result += '\n  Wallapop:';
+            result += contact.socialNetwork.wallapopAccounts.map(wallapop => {
+                let wallapopString = `\n    Url: ${wallapop.url}`;
+                if (wallapop.note !== null) {
+                    wallapopString += `\n    Note: ${wallapop.note}`;
+                }
+                return wallapopString;
             }).join('\n');  // To differentiate between each account
         }
     }
